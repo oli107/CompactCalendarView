@@ -42,7 +42,7 @@ public class CompactCalendarTab extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.main_tab,container,false);
+        View v = inflater.inflate(R.layout.main_tab, container, false);
 
         final List<String> mutableBookings = new ArrayList<>();
 
@@ -66,7 +66,8 @@ public class CompactCalendarTab extends Fragment {
         loadEvents();
         loadEventsForYear(2017);
         compactCalendarView.invalidate();
-
+        compactCalendarView.setSaturdayDisabled(true);
+        compactCalendarView.setSundayDisabled(true);
         logEventsByMonth(compactCalendarView);
 
         // below line will display Sunday as the first day of the week
@@ -181,7 +182,7 @@ public class CompactCalendarTab extends Fragment {
     }
 
     private void openCalendarOnCreate(View v) {
-        final RelativeLayout layout = (RelativeLayout)v.findViewById(R.id.main_content);
+        final RelativeLayout layout = (RelativeLayout) v.findViewById(R.id.main_content);
         ViewTreeObserver vto = layout.getViewTreeObserver();
         vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
@@ -253,13 +254,13 @@ public class CompactCalendarTab extends Fragment {
     private List<Event> getEvents(long timeInMillis, int day) {
         if (day < 2) {
             return Arrays.asList(new Event(Color.argb(255, 169, 68, 65), timeInMillis, "Event at " + new Date(timeInMillis)));
-        } else if ( day > 2 && day <= 4) {
+        } else if (day > 2 && day <= 4) {
             return Arrays.asList(
                     new Event(Color.argb(255, 169, 68, 65), timeInMillis, "Event at " + new Date(timeInMillis)),
                     new Event(Color.argb(255, 100, 68, 65), timeInMillis, "Event 2 at " + new Date(timeInMillis)));
         } else {
             return Arrays.asList(
-                    new Event(Color.argb(255, 169, 68, 65), timeInMillis, "Event at " + new Date(timeInMillis) ),
+                    new Event(Color.argb(255, 169, 68, 65), timeInMillis, "Event at " + new Date(timeInMillis)),
                     new Event(Color.argb(255, 100, 68, 65), timeInMillis, "Event 2 at " + new Date(timeInMillis)),
                     new Event(Color.argb(255, 70, 68, 65), timeInMillis, "Event 3 at " + new Date(timeInMillis)));
         }

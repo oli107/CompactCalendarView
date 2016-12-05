@@ -139,6 +139,14 @@ public class CompactCalendarView extends View {
         compactCalendarController.setCurrentDayBackgroundColor(currentDayBackgroundColor);
         invalidate();
     }
+    public void setSaturdayDisabled(boolean setSaturdayDisabled) {
+        compactCalendarController.setSaturdayDisabled(setSaturdayDisabled);
+        invalidate();
+    }
+    public void setSundayDisabled(boolean setSundayDisabled) {
+        compactCalendarController.setSundayDisabled(setSundayDisabled);
+        invalidate();
+    }
 
     public int getHeightPerDay(){
         return compactCalendarController.getHeightPerDay();
